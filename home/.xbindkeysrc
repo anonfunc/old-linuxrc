@@ -1,0 +1,56 @@
+# For the benefit of emacs users: -*- shell-script -*-
+###################################################
+# xbindkeys configuration for XO development #
+###################################################
+# Shift + Middle button, opens flex link in new window.
+# gb is Vimperator command for go back to the last buffer.
+# Not sure what you'd do in a stock firefox.
+"xdotool click 3 && sleep 0.45 && xdotool key Return"
+  shift + b:2 + Release
+
+# Control + Shift + Middle Click, runs copy text/id.
+#"xdotool click 3 && sleep 0.45 && xdotool key Down Down Down Down Down Return && xx"
+#  shift + control + b:2 + Release
+
+# Control + Alt + Middle Click, runs copy text/id.
+"xdotool click 3 && sleep 0.45 && xdotool key Down Down Down Down Return"
+  alt + control + b:2 + Release
+
+# Ctrl + Middle Click, runs copy text/id.
+#"xdotool click 3 && sleep 0.45 && xdotool key Down Down Down Down Return && xx"
+"xdotool click 3 && sleep 0.45 && xdotool key Down Down Down Down Return"
+  control + b:2 + Release
+
+## Alt + Middle Click, pastes clipboard into the entire field under the cursor
+#"xdotool keyup alt && xx && xdotool click 1 && xdotool key Home shift+End Delete 'Control_L+v' && sleep 0.45 && xdotool key Return"
+"xdotool click 1 && xclip -o | xo_paster.perl"
+  alt + b:2 + Release
+
+"dmenu -i -l 20 <~/.xo | xo_paster.perl"
+  alt + v
+
+"xrandr-menu auto"
+  shift + XF86Display
+
+"xrandr-menu"
+  XF86Display
+
+"synclient TouchpadOff=$(synclient -l | grep -c 'TouchpadOff.*=.*0')"
+  XF86TouchpadToggle
+## Volume!
+#"aumix -v +10"
+#  XF86AudioRaiseVolume
+
+#"aumix -v -10"
+#  XF86AudioLowerVolume
+
+#"amixer -- sset Master toggle"
+#  XF86AudioMute
+
+# MX Rev Middle button
+#"xdotool click 2"
+#  XF86Search
+
+##################################
+# End of xbindkeys configuration #
+##################################
