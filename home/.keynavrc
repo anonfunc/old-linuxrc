@@ -1,0 +1,82 @@
+# This is a keynavrc file. Yours should live in 
+# $HOME/.keynavrc
+#
+# Lines beginning with '#' are comments.
+# Format is:
+#   keysequence cmd1,cmd2,cmd3...
+#
+# Other special values are:
+#   'clear' on a line by itself (no quotes) will erase all keybindings
+#   (including the defaults)
+#   'daemonize' on a line by itself (no quotes) will make keynav background
+#   after parsing the configfile and having no critical errors.
+# 
+# The 'start' command alone is handled specially, in that any key sequence
+# mapped to 'start' will be grabbed when keynav starts up so you can invoke it
+# to activate keynav. The remaining keys are only recognized while keynav is
+# active
+#
+# Project page; http://www.semicomplete.com/projects/keynav
+
+# Use 'clear' to blow away any previous keybindings
+clear
+
+# Use 'daemonize' to background ourselves.
+daemonize
+
+super+semicolon start
+
+Escape end
+ctrl+bracketleft end
+Left cut-left
+Down cut-down
+Up cut-up
+Right cut-right
+shift+Left move-left
+shift+Down move-down
+shift+Up move-up
+shift+Right move-right
+#space warp,click 1,end
+space warp,sh "xdotool click 1",end
+shift+space warp,sh "xdotool click 1",history-back,history-back
+Return warp,sh "xdotool click 3",end
+shift+Return warp,sh "xdotool click 3",history-back,history-back
+b warp,sh "xdotool click 2",end
+semicolon warp
+#1 click 1
+#2 click 2
+1 sh "xdotool click 1"
+2 sh "xdotool click 2"
+3 sh "xdotool click 3"
+4 sh "xdotool click 4"
+5 sh "xdotool click 5"
+
+### Drag examples.  Crashy for now.
+# Start drag holding the left mouse button
+#apostrophe drag 1
+#comma drag 2
+#period drag 1
+# Start drag holding middle mouse + control and shift
+#j drag 2 ctrl+shift
+
+### History
+a history-back
+
+### Restart?
+r sh "killall keynav ; keynav"
+
+
+### XO Commands from .xbindkeysrc?
+### Some mods.
+c warp,sh "xdotool click 3 && sleep 0.3 && xdotool key Down Down Down Down Return",end
+n warp,sh "xdotool click 3 && sleep 0.3 && xdotool key Return",end
+p warp,sh "xdotool click 1 && sleep 0.3 && xclip -o | xo_paster.perl",end
+shift+p warp,sh "xdotool click 1 && sleep 0.3 && dmenu -i -l 20 <~/.xo | xo_paster.perl",end
+
+# Record macros
+q record /home/first/.keynav_macros
+
+# Mouse scrolling
+
+j warp,click 5
+k warp,click 4
