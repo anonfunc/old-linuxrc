@@ -1,0 +1,3 @@
+[submodule "home/.urxvt/urxvt-font"]
+	path = home/.urxvt/urxvt-font
+	url = git://github.com/noah/urxvt-font.git
